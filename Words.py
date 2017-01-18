@@ -9,7 +9,7 @@ class Word:
         self.wordList = []
 
     #  a function to get a random word from the word list
-    def getRandomWord(self):
+    def get_random_word(self):
         self.read_file()
         # picking a random word from the list
         word = random.randint(0, len(self.wordList) - 1)
