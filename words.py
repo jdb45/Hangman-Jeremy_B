@@ -6,14 +6,14 @@ class Word:
 
     #  initializing the word list
     def __init__(self):
-        self.wordList = []
+        self.word_list = []
 
     #  a function to get a random word from the word list
     def get_random_word(self):
         self.read_file()
         # picking a random word from the list
-        word = random.randint(0, len(self.wordList) - 1)
-        return self.wordList[word]
+        word = random.randint(0, len(self.word_list) - 1)
+        return self.word_list[word]
 
     # a function to read the txt file
     def read_file(self):
@@ -28,13 +28,13 @@ class Word:
 
         # reading each line in the txt file
         while True:
-            fileRead = file.readline()
-            if fileRead == '':
+            file_read = file.readline()
+            if file_read == '':
                 break
 
             else:
-                self.wordList.append(fileRead)  # adding each line to the list
+                self.word_list.append(file_read)  # adding each line to the list
 
         file.close()
 
-        return self.wordList
+        return self.word_list
