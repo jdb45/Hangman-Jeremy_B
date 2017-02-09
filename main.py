@@ -6,4 +6,6 @@ def main():
     # calling the game run function
     game.game_run()
 
-main()
+
+if __name__ == '__main__':
+    main()

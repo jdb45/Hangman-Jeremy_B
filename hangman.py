@@ -67,10 +67,10 @@ class Hangman:
     def letters_guessed(self, guessed):
 
         while True:
-            guess = input("Guess a letter!").lower()
+            guess = self.guess_letter()
             # checking to make sure there is only 1 letter entered
             if len(guess) != 1:
-                print("Please enter only 1 letter!")
+                print('Please enter only 1 letter!')
             # checking to make sure a letter was entered
             elif guess not in "abcdefghijklmnopqrstuvwxyz49":
                 print("Please enter a letter, NOT a number! *Except 4 or 9*")
@@ -80,9 +80,14 @@ class Hangman:
             else:
                 return guess
 
+    def guess_letter(self):
+
+        return input("Guess a letter!").lower()
+
+
     def play_again(self):
         # gives the user the option to play again or not
-        return input("Do you want to play again? (yes or no)").lower().startswith("y")
+        return input('Do you want to play again? (yes or no)').lower().startswith("y")
 
 
     def show_game_board(self, hangman_board_image, incorrect_guess, correct_guess, picked_word):
@@ -118,8 +123,8 @@ class Hangman:
         return all_correct_letters
 
     # check to see if the player has guessed 6 times and lost
-    def check_word_lose(self, missed_letters):
-        if len(missed_letters) == len(self.hangman_board_image) - 1:
+    def check_word_lose(self, missed_letters, hangman_board_image):
+        if len(missed_letters) == len(hangman_board_image) - 1:
             return True
         return False
 
@@ -147,7 +152,7 @@ class Hangman:
             # user has lost
             else:
                 self.incorrect_letters = self.incorrect_letters + guess
-                self.user_lose = self.check_word_lose(self.incorrect_letters)
+                self.user_lose = self.check_word_lose(self.incorrect_letters, self.hangman_board_image)
             # if the user wins or user loses is true it will show the user if they won or lost
             if self.user_win or self.user_lose:
                 self.show_game_board(self.hangman_board_image, self.incorrect_letters, self.correct_letters, self.picked_word)
@@ -170,7 +175,7 @@ class Hangman:
         # if the user doesn't want to play anymore the game will end
         else:
             print()
-            print("Thank you for playing NFL Hangman!")
+            print('Thank you for playing NFL Hangman!')
 
 
 
