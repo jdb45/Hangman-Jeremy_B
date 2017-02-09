@@ -32,6 +32,9 @@ class TestHangman(unittest.TestCase):
         guess = game.letters_guessed('abc')
         self.assertEqual(guess, 's')
 
+    def test_show_game_board(self):
+        self.assertTrue('c', Hangman.show_game_board(self, 'c', 'packers'))
+        self.assertTrue('i', Hangman.show_game_board(self, 'i', 'vikings'))
 
 if __name__ == '__main__':
     unittest.main()

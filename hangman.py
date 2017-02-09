@@ -91,7 +91,7 @@ class Hangman:
         return input('Do you want to play again? (yes or no)').lower().startswith("y")
 
 
-    def show_game_board(self, hangman_board_image, incorrect_guess, correct_guess, picked_word):
+    def show_game_board_image(self, hangman_board_image, incorrect_guess):
         # printing the game board
         print(emoji.emojize(hangman_board_image[len(incorrect_guess)], use_aliases=True))
         print()
@@ -101,6 +101,8 @@ class Hangman:
             print(letter, end=" ")
         print()
 
+
+    def show_game_board(self, correct_guess, picked_word):
         hidden_letters = " "
         # replacing the hidden letters with the correctly guessed letters
         for i in range(len(picked_word)):
@@ -141,8 +143,8 @@ class Hangman:
     def user_wants_to_play(self):
 
         while True:
-            self.show_game_board(self.hangman_board_image, self.incorrect_letters, self.correct_letters, self.picked_word)
-
+            self.show_game_board_image(self.hangman_board_image, self.incorrect_letters)
+            self.show_game_board(self.correct_letters, self.picked_word)
             # getting the user input letter
             guess = self.letters_guessed(self.incorrect_letters + self.correct_letters)
             # if the letter is in the picked word it will be added to the string and checked to see if the user won
@@ -156,7 +158,8 @@ class Hangman:
                 self.user_lose = self.check_word_lose(self.incorrect_letters, self.hangman_board_image)
             # if the user wins or user loses is true it will show the user if they won or lost
             if self.user_win or self.user_lose:
-                self.show_game_board(self.hangman_board_image, self.incorrect_letters, self.correct_letters, self.picked_word)
+                self.show_game_board_image(self.hangman_board_image, self.incorrect_letters)
+                self.show_game_board(self.correct_letters, self.picked_word)
                 print()
                 if self.user_win:
                     print("Congratulations! The random team name picked was", self.picked_word + ".", "You win!")
