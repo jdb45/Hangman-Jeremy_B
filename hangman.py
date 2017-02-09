@@ -1,6 +1,7 @@
 from words import Word
 import emoji
 
+
 class Hangman:
 
     def __init__(self):
@@ -176,8 +177,6 @@ class Hangman:
         else:
             print()
             print('Thank you for playing NFL Hangman!')
-
-
 
     def game_run(self):
 
