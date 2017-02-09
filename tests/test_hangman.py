@@ -44,6 +44,14 @@ class TestHangman(unittest.TestCase):
         self.assertFalse(Hangman.show_game_board(self, 'w', 'vikings'))
         self.assertFalse(Hangman.show_game_board(self, 'w', 'packers'))
 
+    def test_show_game_board_image(self):
+        # testing the game board image
+        game = Hangman()
+        image = Hangman.hangman_board_image
+        guess = game.show_game_board_image(image, 'abd')
+        # showing the image after 3 wrong guesses, and the incorrect letters
+        self.assertTrue('abc', guess)
+
     @patch('builtins.input', side_effect=['no'])
     def test_play_one_game_no(self, mock_input):
         # testing if the user doesn't want to play another game

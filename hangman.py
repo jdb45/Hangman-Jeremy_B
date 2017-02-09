@@ -3,11 +3,7 @@ import emoji
 
 
 class Hangman:
-
-    def __init__(self):
-        random_word = Word().get_random_word()
-        self.random_word = random_word[:-1]
-        self.hangman_board_image = ['''
+    hangman_board_image = ['''
 
           +-------+
           |       |
@@ -64,6 +60,11 @@ class Hangman:
          / \      |
                   |
     ----------------''']
+
+    def __init__(self):
+        random_word = Word().get_random_word()
+        self.random_word = random_word[:-1]
+
 
     def letters_guessed(self, guessed):
 
@@ -148,8 +149,8 @@ class Hangman:
             if guess in self.picked_word:
                 self.correct_letters = self.correct_letters + guess
                 self.user_win = self.check_word_win(self.correct_letters, self.picked_word)
-            # if the letter is not in the picked word it will be added to the incorrect letter string and checked to see if the
-            # user has lost
+            # if the letter is not in the picked word it will be added to the incorrect letter
+            # string and checked to see if the user has lost
             else:
                 self.incorrect_letters = self.incorrect_letters + guess
                 self.user_lose = self.check_word_lose(self.incorrect_letters, self.hangman_board_image)
