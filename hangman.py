@@ -85,11 +85,9 @@ class Hangman:
 
         return input("Guess a letter!").lower()
 
-
     def play_again(self):
         # gives the user the option to play again or not
         return input('Do you want to play again? (yes or no)').lower().startswith("y")
-
 
     def show_game_board_image(self, hangman_board_image, incorrect_guess):
         # printing the game board
@@ -100,7 +98,6 @@ class Hangman:
         for letter in incorrect_guess:
             print(letter, end=" ")
         print()
-
 
     def show_game_board(self, correct_guess, picked_word):
         hidden_letters = " "
